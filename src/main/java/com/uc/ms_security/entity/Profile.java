@@ -19,6 +19,7 @@ public class Profile {
     @Column(length = 20)
     private String phone;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "birth_date")
     private LocalDate birthDate;
 }
