@@ -22,4 +22,7 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @OneTone(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Profile profile;
 }

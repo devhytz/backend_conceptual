@@ -10,4 +10,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByEmail(String email);
 
     boolean existsByEmailAndIdNot(String email, Long id);
+
+    @TntityGraph(attributePaths = {"profile"})
+    Optional<User> findWithProfileById(Long id);
+    
 }

@@ -26,6 +26,11 @@ public class ProfileMapper {
     }
 
     public ProfileResponseDTO toResponseDTO(Profile profile) {
+
+        if (profile == null) {
+            return null;
+        }
+        
         return new ProfileResponseDTO(
                 profile.getId(),
                 profile.getPhone(),

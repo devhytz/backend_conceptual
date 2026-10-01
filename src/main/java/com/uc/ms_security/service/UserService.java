@@ -47,6 +47,13 @@ public class UserService {
                 ));
     }
 
+    public UserDetailResponseDTO findByAndProfile(Long id) {
+        User user = userRepository
+                    .findWithProfileById(id)
+                    .orElseThrow(() -> new ApplicationException(ErrorCase.NOT_FOUND, "Usuario no encontrado con id: " + id)
+                    );
+    }
+
     public UserResponseDTO findById(Long id) {
         User user = findUser(id);
         return userMapper.toResponseDTO(user);
@@ -69,4 +76,4 @@ public class UserService {
         User user = findUser(id);
         userRepository.delete(user);
     }
-}
+}

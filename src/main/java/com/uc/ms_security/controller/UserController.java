@@ -45,4 +45,9 @@ public class UserController {
     public void delete(@PathVariable Long id) {
         userService.delete(id);
     }
+
+    @GetMapping("/{id}/profile")
+    public UserDetailResponseDTO findByAndProfile(@PathVariable Long id) {
+        return userService.findByAndProfile(id)
+    }
 }

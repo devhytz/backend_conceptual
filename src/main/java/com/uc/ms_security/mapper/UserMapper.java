@@ -11,6 +11,8 @@ import java.util.List;
 @Component
 public class UserMapper {
 
+    private final ProfileMapper profileMapper;
+
     public User toEntity(CreateUserDTO dto) {
         User user = new User();
 
@@ -35,6 +37,15 @@ public class UserMapper {
                 user.getId(),
                 user.getName(),
                 user.getEmail()
+        );
+    }
+
+    public UserDetailResponseDTO toDetailResponseDTO(User user) {
+        return new UserDetailResponseDTO(
+            user.getId(),
+            user.getName(),
+            user.getEmail(),
+            profileMapper.toResponseDTO(user.getProfile())
         );
     }
 
