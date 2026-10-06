@@ -51,4 +51,9 @@ public class UserController {
     public UserDetailResponseDTO findByAndProfile(@PathVariable Long id) {
         return userService.findByAndProfile(id);
     }
+
+    @GetMapping("/{id}/detail-with-sessions")
+    public com.uc.ms_security.dto.User.UserSessionsResponseDTO findByIdAndSessions(@PathVariable Long id) {
+        return userService.findByIdAndSessions(id);
+    }
 }

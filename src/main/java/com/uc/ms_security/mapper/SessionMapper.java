@@ -1,6 +1,7 @@
 package com.uc.ms_security.mapper;
 
 import com.uc.ms_security.dto.Session.CreateSessionDTO;
+import com.uc.ms_security.dto.Session.SessionRequestDTO;
 import com.uc.ms_security.dto.Session.SessionResponseDTO;
 import com.uc.ms_security.dto.Session.UpdateSessionDTO;
 import com.uc.ms_security.entity.Session;
@@ -21,7 +22,26 @@ public class SessionMapper {
         return session;
     }
 
+    public Session toEntity(SessionRequestDTO dto) {
+        Session session = new Session();
+
+        session.setToken(dto.getToken());
+        session.setExpiration(dto.getExpiration());
+        session.setCode2FA(dto.getCode2FA());
+
+        return session;
+    }
+
     public void updateEntity(UpdateSessionDTO dto, Session session) {
+        session.setToken(dto.getToken());
+        session.setExpiration(dto.getExpiration());
+
+        if (dto.getCode2FA() != null) {
+            session.setCode2FA(dto.getCode2FA());
+        }
+    }
+
+    public void updateEntity(SessionRequestDTO dto, Session session) {
         session.setToken(dto.getToken());
         session.setExpiration(dto.getExpiration());
 
