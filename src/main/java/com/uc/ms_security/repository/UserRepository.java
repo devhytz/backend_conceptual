@@ -1,8 +1,11 @@
 package com.uc.ms_security.repository;
 
 import com.uc.ms_security.entity.User;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -11,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmailAndIdNot(String email, Long id);
 
-    @TntityGraph(attributePaths = {"profile"})
+    @EntityGraph(attributePaths = {"profile"})
     Optional<User> findWithProfileById(Long id);
     
 }

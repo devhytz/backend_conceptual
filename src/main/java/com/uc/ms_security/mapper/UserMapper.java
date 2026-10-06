@@ -2,13 +2,16 @@ package com.uc.ms_security.mapper;
 
 import com.uc.ms_security.dto.User.CreateUserDTO;
 import com.uc.ms_security.dto.User.UpdateUserDTO;
+import com.uc.ms_security.dto.User.UserDetailResponseDTO;
 import com.uc.ms_security.dto.User.UserResponseDTO;
 import com.uc.ms_security.entity.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class UserMapper {
 
     private final ProfileMapper profileMapper;

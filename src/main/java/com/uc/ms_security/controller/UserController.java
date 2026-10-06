@@ -2,6 +2,7 @@ package com.uc.ms_security.controller;
 
 import com.uc.ms_security.dto.User.CreateUserDTO;
 import com.uc.ms_security.dto.User.UpdateUserDTO;
+import com.uc.ms_security.dto.User.UserDetailResponseDTO;
 import com.uc.ms_security.dto.User.UserResponseDTO;
 import com.uc.ms_security.service.UserService;
 import jakarta.validation.Valid;
@@ -48,6 +49,6 @@ public class UserController {
 
     @GetMapping("/{id}/profile")
     public UserDetailResponseDTO findByAndProfile(@PathVariable Long id) {
-        return userService.findByAndProfile(id)
+        return userService.findByAndProfile(id);
     }
 }

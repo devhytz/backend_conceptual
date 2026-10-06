@@ -1,5 +1,6 @@
 package com.uc.ms_security.entity;
 
+import com.uc.ms_security.entity.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,4 +23,8 @@ public class Profile {
     @Temporal(TemporalType.DATE)
     @Column(name = "birth_date")
     private LocalDate birthDate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
+    private User user;
 }

@@ -2,6 +2,7 @@ package com.uc.ms_security.service;
 
 import com.uc.ms_security.dto.User.CreateUserDTO;
 import com.uc.ms_security.dto.User.UpdateUserDTO;
+import com.uc.ms_security.dto.User.UserDetailResponseDTO;
 import com.uc.ms_security.dto.User.UserResponseDTO;
 import com.uc.ms_security.entity.User;
 import com.uc.ms_security.exception.ApplicationException;
@@ -52,6 +53,7 @@ public class UserService {
                     .findWithProfileById(id)
                     .orElseThrow(() -> new ApplicationException(ErrorCase.NOT_FOUND, "Usuario no encontrado con id: " + id)
                     );
+        return userMapper.toDetailResponseDTO(user);
     }
 
     public UserResponseDTO findById(Long id) {
